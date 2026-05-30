@@ -16,4 +16,14 @@ public interface SysUserService extends IService<SysUser> {
      */
     boolean addUser(LoginDto loginDto);
 
+    /**
+     * 登录
+     */
+    void login(LoginDto loginDto);
+
+    /**
+     * 根据用户名查询用户ID
+     */
+    Long getUserIdByUserName(String userName);
+
 }

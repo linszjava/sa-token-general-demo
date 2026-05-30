@@ -29,4 +29,13 @@ public class SysUserController {
     public R<Boolean> addUser(@Valid LoginDto loginDto) {
         return R.ok(sysUserService.addUser(loginDto), "添加用户成功");
     }
+
+    /**
+     * 登录
+     */
+    @PostMapping("/login")
+    public R<Void> login(@Valid LoginDto loginDto) {
+        sysUserService.login(loginDto);
+        return R.okMsg("登录成功");
+    }
 }
