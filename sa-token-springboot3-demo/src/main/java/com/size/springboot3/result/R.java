@@ -1,5 +1,6 @@
 package com.size.springboot3.result;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.size.springboot3.exception.ResultCode;
 import lombok.Getter;
 
@@ -74,6 +75,7 @@ public class R<T> implements Serializable {
         return new R<>(code, msg, data);
     }
 
+    @JsonIgnore
     public boolean isSuccess() {
         return ResultCode.SUCCESS.getCode().equals(this.code);
     }

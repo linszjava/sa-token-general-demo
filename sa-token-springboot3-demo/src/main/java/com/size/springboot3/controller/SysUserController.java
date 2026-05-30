@@ -1,10 +1,12 @@
 package com.size.springboot3.controller;
 
+import cn.dev33.satoken.stp.StpUtil;
 import com.size.springboot3.param.dto.LoginDto;
 import com.size.springboot3.result.R;
 import com.size.springboot3.service.SysUserService;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,5 +39,13 @@ public class SysUserController {
     public R<Void> login(@Valid LoginDto loginDto) {
         sysUserService.login(loginDto);
         return R.okMsg("登录成功");
+    }
+
+    /**
+     *  校验是否登录
+     */
+    @GetMapping("/isLogin")
+    public R<Boolean> isLogin() {
+        return R.ok(StpUtil.isLogin(), "校验是否登录");
     }
 }
