@@ -32,7 +32,14 @@ public class HandleException {
 
     @ExceptionHandler({NotPermissionException.class, NotRoleException.class})
     public R<Void> handleSaTokenAuthException(RuntimeException e) {
-        return R.fail(ResultCode.FORBIDDEN);
+//        return R.fail(ResultCode.FORBIDDEN);
+        String excepMsg = "无权访问:" +ResultCode.FORBIDDEN.getMsg();
+        if (e instanceof NotPermissionException npe){
+            excepMsg = npe.getPermission();
+        } else if (e instanceof NotRoleException nre) {
+            excepMsg = nre.getRole();
+        }
+        return R.fail(excepMsg);
     }
 
     @ExceptionHandler({MethodArgumentNotValidException.class, BindException.class})
