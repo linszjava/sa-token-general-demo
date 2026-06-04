@@ -56,6 +56,7 @@ public class HandleException {
     @ExceptionHandler(Exception.class)
     public R<Void> handleException(Exception e) {
         log.error("系统异常", e);
+        // 默认如下
         //return R.fail(ResultCode.FAIL.getCode(), ResultCode.FAIL.getMsg());
         return R.fail(ResultCode.FAIL.getCode(), ResultCode.FAIL.getMsg()+":"+e.getMessage());
     }
