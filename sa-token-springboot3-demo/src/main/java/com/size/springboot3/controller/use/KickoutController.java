@@ -1,7 +1,6 @@
-package com.size.springboot3.controller;
+package com.size.springboot3.controller.use;
 
 import cn.dev33.satoken.stp.StpUtil;
-import cn.dev33.satoken.util.SaResult;
 import com.size.springboot3.result.R;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,4 +1,4 @@
-package com.size.springboot3.controller;
+package com.size.springboot3.controller.use;
 
 import cn.dev33.satoken.stp.StpUtil;
 import com.size.springboot3.param.dto.LoginDto;

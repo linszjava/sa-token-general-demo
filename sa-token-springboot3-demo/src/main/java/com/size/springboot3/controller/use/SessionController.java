@@ -1,4 +1,4 @@
-package com.size.springboot3.controller;
+package com.size.springboot3.controller.use;
 
 import cn.dev33.satoken.session.SaSession;
 import cn.dev33.satoken.session.SaSessionCustomUtil;
