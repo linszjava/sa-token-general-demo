@@ -1,5 +1,8 @@
 package com.size.springboot3.service.impl;
 
+import cn.dev33.satoken.stp.StpUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.size.springboot3.entity.SysUser;
 import com.size.springboot3.exception.CommonException;
@@ -37,6 +40,31 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser>
         int result = sysUserMapper.insert(sysUser);
         if (result > 0) return true;
         else throw new CommonException(ResultCode.USER_EXISTS);
+    }
+
+    /**
+     * 登录
+     *
+     * @param loginDto
+     */
+    @Override
+    public void login(LoginDto loginDto) {
+        Long userId = getUserIdByUserName(loginDto.getUsername());
+        StpUtil.login(userId);
+
+    }
+
+    /**
+     * 根据用户名查询用户ID
+     *
+     * @param userName
+     */
+    @Override
+    public Long getUserIdByUserName(String userName) {
+        LambdaQueryWrapper<SysUser> wrapper = new LambdaQueryWrapper<>(SysUser.class);
+        Long userId = sysUserMapper.selectOne(wrapper.eq(SysUser::getUsername, userName)).getId();
+        if (userId != null) return userId;
+        else throw new CommonException(ResultCode.USER_NOT_EXISTS);
     }
 }
 

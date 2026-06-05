@@ -3,6 +3,7 @@ server:
 
 # satoken 部分
 sa-token:
+  is-print: false  # 关闭 Sa-Token 启动 banner
   token-name: size-token
   # 默认30天 -1 永久有效
   timeout: 2592000
@@ -19,11 +20,29 @@ spring:
     username: root
     password: linsz99@  # 注意修改
     type: com.zaxxer.hikari.HikariDataSource
+  main:
+    banner-mode: off
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password:
+      database: 1
+      connect-timeout: 10s
+      lettuce:
+        pool:
+          max-active: 200
+          max-wait: -1ms
+          max-idle: 10
+          min-idle: 4
 
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*.xml
   type-aliases-package: com.size.springboot3.entity
   global-config:
+    banner: false  # 关闭 MyBatis-Plus 启动 banner
     db-config:
       id-type: auto
   camel-case-to-underline: true
+
+

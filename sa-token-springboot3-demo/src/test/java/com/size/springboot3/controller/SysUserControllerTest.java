@@ -20,4 +20,10 @@ class SysUserControllerTest {
         sysUserService.addUser(new LoginDto("admin", "123456"));
         System.out.println("添加用户成功");
     }
+
+    @Test
+    public void login() {
+        sysUserService.login(new LoginDto("admin", "123456"));
+        System.out.println("登录成功");
+    }
 }
